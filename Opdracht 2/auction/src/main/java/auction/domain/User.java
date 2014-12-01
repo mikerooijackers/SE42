@@ -1,36 +1,40 @@
 package auction.domain;
 
-import java.io.Serializable;
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 
 /**
- *
- * @author Mike
+ * Contains a user entity
+ * @author Subhi
  */
 @Entity
-public class User implements Serializable {
-    
+public class User {
+    /**
+     * The email address of the user
+     */
     @Id
-    private Long id;
     private String email;
     
-    public User() {
-    }
-    
+    /**
+     * No arg persistence constructor
+     */
+    public User() {}
+
+    /**
+     * Constructs a user using the passed email address
+     * @param email 
+     */
     public User(String email) {
         this.email = email;
 
     }
 
+    /**
+     * Returns the email address of this user
+     * @return The email address
+     */
     public String getEmail() {
         return email;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }

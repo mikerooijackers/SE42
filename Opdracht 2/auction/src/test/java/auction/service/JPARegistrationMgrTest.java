@@ -8,14 +8,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 import auction.domain.User;
+import javax.persistence.Persistence;
+import util.DatabaseCleaner;
 
-public class RegistrationMgrTest {
+public class JPARegistrationMgrTest {
 
     private RegistrationMgr registrationMgr;
 
     @Before
     public void setUp() throws Exception {
+        System.out.print("before");
         registrationMgr = new RegistrationMgr();
+        DatabaseCleaner dc = new DatabaseCleaner(Persistence.createEntityManagerFactory("db").createEntityManager());
+        dc.clean();
     }
 
     @Test
@@ -48,6 +53,9 @@ public class RegistrationMgrTest {
         User user1 = registrationMgr.registerUser("xxx8@yyy");
         users = registrationMgr.getUsers();
         assertEquals(1, users.size());
+        System.out.println("-----------------------");
+        System.out.println(user1 + " " + user1.getClass().getName());
+        System.out.println(users.get(0) + " " + users.get(0).getClass().getName());
         assertSame(users.get(0), user1);
 
 
