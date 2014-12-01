@@ -1,5 +1,7 @@
 package auction.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import nl.fontys.util.Money;
 import javax.persistence.Id;
 import javax.persistence.Entity;
@@ -8,10 +10,12 @@ import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.CascadeType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
  * Contains an item entity
+ * @author Subhi
  */
 @Entity
 public class Item implements Comparable {
@@ -45,6 +49,9 @@ public class Item implements Comparable {
      */
     @OneToOne
     private Bid highest;
+    
+    @OneToMany(mappedBy="item", cascade = CascadeType.PERSIST)
+    private List<Bid> bids;
 
     public Item() {
     }
@@ -56,9 +63,10 @@ public class Item implements Comparable {
      * @param description The description this item has
      */
     public Item(User seller, Category category, String description) {
-        this.seller = seller;
         this.category = category;
         this.description = description;
+        bids = new ArrayList<Bid>();
+        seller.addItem(this);
     }
 
     /**
@@ -69,12 +77,19 @@ public class Item implements Comparable {
         return id;
     }
 
+    public void setSeller(User seller) {
+        this.seller = seller;
+    }
     /**
      * Returns the user that is selling this item
      * @return The user
      */
     public User getSeller() {
         return seller;
+    }
+    
+    public List<Bid> getBids() {
+        return this.bids;
     }
 
     /**
@@ -112,6 +127,9 @@ public class Item implements Comparable {
             return null;
         }
         highest = new Bid(buyer, amount);
+        System.out.println(bids + "HighedT");
+        this.bids.add(highest);
+        highest.setItem(this);
         return highest;
     }
 
@@ -126,12 +144,19 @@ public class Item implements Comparable {
     }
 
     public boolean equals(Object o) {
-        //TODO
-        return false;
+        if (o == null) {
+            return false;
+        } else if (o.getClass() != this.getClass()) {
+            return false;
+        }
+        return ((Item) o).getId() == this.id;
     }
 
     public int hashCode() {
-        //TODO
-        return 0;
+        int hash = 1;
+        hash = hash * 13 + (this.getDescription() == null ? 0 : this.getDescription().hashCode());
+        hash = hash * 17 + (this.getSeller() == null ? 0 : this.getSeller().getEmail().hashCode());
+        hash = hash * 19 + (this.getCategory() == null ? 0 : this.getCategory().getDiscription().hashCode());
+        return hash;
     }
 }

@@ -9,7 +9,6 @@ import java.util.List;
 
 /**
  * Contains a user entity
- * @author Subhi
  */
 @Entity
 public class User {

@@ -12,7 +12,6 @@ import javax.persistence.OneToOne;
 
 /**
  * Contains an item entity
- * @author Subhi
  */
 @Entity
 public class Item implements Comparable {
