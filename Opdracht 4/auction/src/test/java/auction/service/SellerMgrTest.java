@@ -85,7 +85,7 @@ public class SellerMgrTest {
         em.getTransaction().commit();
         assertFalse(res2);
         int count2 = auctionMgr.findItemByDescription(omsch2).size();
-        assertEquals(1, count2);
+        assertEquals(0, count2);
         
     }
 

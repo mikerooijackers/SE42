@@ -85,7 +85,7 @@ public class ItemsFromSellerTest {
          *  assertEquals 2, because we only add create 2 items, so i'm not really sure where the 3rd would come from
          */
         
-        assertNotSame(user3, userWithItem);
+        assertSame(user3, userWithItem);
         assertEquals(user3, userWithItem);
 
     }
