@@ -11,10 +11,9 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 public class ItemDAOJPAImpl implements ItemDAO {
-    EntityManagerFactory ef = Persistence.createEntityManagerFactory("db");
-    EntityManager items = ef.createEntityManager();
-    
-    public ItemDAOJPAImpl() {
+    private EntityManager items;
+    public ItemDAOJPAImpl(EntityManager em) {
+        this.items = em;
     }
 
     @Override
@@ -28,9 +27,7 @@ public class ItemDAOJPAImpl implements ItemDAO {
         // if (find(item.getId()) != null) {
         //     throw new EntityExistsException();
         // }
-        items.getTransaction().begin();
         items.persist(item);
-        items.getTransaction().commit();
     }
 
     @Override
@@ -49,9 +46,7 @@ public class ItemDAOJPAImpl implements ItemDAO {
 
     @Override
     public void remove(Item item) {
-        items.getTransaction().begin();
         items.remove(this.find(item.getId()));
-        items.getTransaction().commit();
     }
 
     @Override

@@ -19,7 +19,7 @@ public class ItemDAOJPAImpl implements ItemDAO {
 
     @Override
     public int count() {
-        return (Integer) items.createNativeQuery("SELECT count(*) FROM Item i")
+        return (Integer) items.createNativeQuery("SELECT count(*) FROM item i")
                 .getSingleResult();  
     }
 

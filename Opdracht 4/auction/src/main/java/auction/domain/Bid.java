@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Entity;
 import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
+import javax.persistence.GeneratedValue;
 
 @Entity
 public class Bid {
@@ -16,6 +18,7 @@ public class Bid {
      * The id of this item
      */
     @Id
+    @GeneratedValue
     private Long id;
 
     @Column
@@ -24,8 +27,12 @@ public class Bid {
     @ManyToOne(cascade = CascadeType.MERGE)
     private User buyer;
 
-    @Column
+    @Embedded
     private Money amount;
+    
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(nullable=false)
+    private Item item;
     
     public Bid() {
     }
@@ -45,5 +52,12 @@ public class Bid {
 
     public Money getAmount() {
         return amount;
+    }
+    public void setItem(Item i) {
+        this.item = i;
+    }
+    
+    public Item getItem() {
+        return this.item;
     }
 }

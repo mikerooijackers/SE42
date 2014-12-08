@@ -8,13 +8,16 @@ import auction.domain.Item;
 import auction.domain.User;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
 
 public class AuctionMgr  {
 
     private ItemDAO itemDAO;
-    public AuctionMgr() {
-        itemDAO = new ItemDAOJPAImpl();
+    
+    public AuctionMgr(EntityManager em) {
+        itemDAO = new ItemDAOJPAImpl(em);
     }
+    
     
    /**
      * @param id

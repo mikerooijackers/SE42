@@ -2,7 +2,10 @@ package nl.fontys.util;
 
 import java.io.*;
 import java.text.*;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 
+@Embeddable
 public class Money implements Serializable, Comparable {
 
 	private static final long serialVersionUID = 1L;

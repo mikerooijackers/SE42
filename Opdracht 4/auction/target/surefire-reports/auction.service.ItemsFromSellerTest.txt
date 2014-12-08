@@ -1,80 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="0" name="auction.service.JPARegistrationMgrTest" time="0.053" errors="3" skipped="0">
-  <properties>
-    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
-    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/jre/lib"/>
-    <property name="java.vm.version" value="25.5-b02"/>
-    <property name="gopherProxySet" value="false"/>
-    <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="java.vendor.url" value="http://java.oracle.com/"/>
-    <property name="path.separator" value=":"/>
-    <property name="guice.disable.misplaced.annotation.check" value="true"/>
-    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
-    <property name="file.encoding.pkg" value="sun.io"/>
-    <property name="user.country" value="NL"/>
-    <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="sun.os.patch.level" value="unknown"/>
-    <property name="test" value="auction.service.**.*Test"/>
-    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/Users/Mike/Dropbox/school/p8/SE42/SE42/Opdracht 4/auction"/>
-    <property name="java.runtime.version" value="1.8.0_05-b13"/>
-    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
-    <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/jre/lib/endorsed"/>
-    <property name="os.arch" value="x86_64"/>
-    <property name="java.io.tmpdir" value="/var/folders/p1/35w6v9n96lz9sh7ttz9jp46h0000gn/T/"/>
-    <property name="line.separator" value="
-"/>
-    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="os.name" value="Mac OS X"/>
-    <property name="maven.ext.class.path" value="/Applications/NetBeans/NetBeans 8.0.app/Contents/Resources/NetBeans/java/maven-nblib/netbeans-eventspy.jar"/>
-    <property name="classworlds.conf" value="/Applications/NetBeans/NetBeans 8.0.app/Contents/Resources/NetBeans/java/maven/bin/m2.conf"/>
-    <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="java.library.path" value="/Applications/NetBeans/NetBeans 8.0.app/Contents/Resources/NetBeans/webcommon/bin::/Users/Mike/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
-    <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="java.class.version" value="52.0"/>
-    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="10.10.1"/>
-    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
-    <property name="user.home" value="/Users/Mike"/>
-    <property name="user.timezone" value="Europe/Amsterdam"/>
-    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
-    <property name="java.specification.version" value="1.8"/>
-    <property name="file.encoding" value="UTF-8"/>
-    <property name="user.name" value="Mike"/>
-    <property name="java.class.path" value="/Applications/NetBeans/NetBeans 8.0.app/Contents/Resources/NetBeans/java/maven/boot/plexus-classworlds-2.4.jar"/>
-    <property name="java.vm.specification.version" value="1.8"/>
-    <property name="sun.arch.data.model" value="64"/>
-    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=auction.service.**.*Test -Dmaven.ext.class.path=/Applications/NetBeans/NetBeans 8.0.app/Contents/Resources/NetBeans/java/maven-nblib/netbeans-eventspy.jar surefire:test"/>
-    <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="user.language" value="nl"/>
-    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
-    <property name="java.vm.info" value="mixed mode"/>
-    <property name="java.version" value="1.8.0_05"/>
-    <property name="java.ext.dirs" value="/Users/Mike/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java"/>
-    <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/jre/classes"/>
-    <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="maven.home" value="/Applications/NetBeans/NetBeans 8.0.app/Contents/Resources/NetBeans/java/maven"/>
-    <property name="file.separator" value="/"/>
-    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
-    <property name="sun.cpu.endian" value="little"/>
-    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
-    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
-    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
-    <property name="sun.cpu.isalist" value=""/>
-  </properties>
-  <testcase classname="auction.service.JPARegistrationMgrTest" name="registerUser" time="0.003">
-    <error message="Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.0.v20130507-3faac2b): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user &apos;se42&apos;@&apos;localhost&apos; (using password: YES)
-Error Code: 1045" type="javax.persistence.PersistenceException">javax.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.0.v20130507-3faac2b): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user &apos;se42&apos;@&apos;localhost&apos; (using password: YES)
+-------------------------------------------------------------------------------
+Test set: auction.service.ItemsFromSellerTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.028 sec <<< FAILURE!
+biDirectionalTest(auction.service.ItemsFromSellerTest)  Time elapsed: 0.002 sec  <<< ERROR!
+javax.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.0.v20130507-3faac2b): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Access denied for user 'se42'@'localhost' (using password: YES)
 Error Code: 1045
 	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:762)
 	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:204)
 	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.createEntityManagerImpl(EntityManagerFactoryDelegate.java:304)
 	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.createEntityManagerImpl(EntityManagerFactoryImpl.java:336)
 	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.createEntityManager(EntityManagerFactoryImpl.java:302)
-	at auction.service.JPARegistrationMgrTest.&lt;init&gt;(JPARegistrationMgrTest.java:18)
+	at auction.service.ItemsFromSellerTest.<init>(ItemsFromSellerTest.java:20)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -104,7 +41,7 @@ Error Code: 1045
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 Caused by: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.0.v20130507-3faac2b): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user &apos;se42&apos;@&apos;localhost&apos; (using password: YES)
+Internal Exception: java.sql.SQLException: Access denied for user 'se42'@'localhost' (using password: YES)
 Error Code: 1045
 	at org.eclipse.persistence.exceptions.DatabaseException.sqlException(DatabaseException.java:331)
 	at org.eclipse.persistence.exceptions.DatabaseException.sqlException(DatabaseException.java:326)
@@ -115,38 +52,29 @@ Error Code: 1045
 	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryProvider.login(EntityManagerFactoryProvider.java:239)
 	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:681)
 	... 33 more
-Caused by: java.sql.SQLException: Access denied for user &apos;se42&apos;@&apos;localhost&apos; (using password: YES)
+Caused by: java.sql.SQLException: Access denied for user 'se42'@'localhost' (using password: YES)
 	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:946)
 	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:2870)
 	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:812)
 	at com.mysql.jdbc.MysqlIO.secureAuth411(MysqlIO.java:3269)
 	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1182)
 	at com.mysql.jdbc.Connection.createNewIO(Connection.java:2670)
-	at com.mysql.jdbc.Connection.&lt;init&gt;(Connection.java:1531)
+	at com.mysql.jdbc.Connection.<init>(Connection.java:1531)
 	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:266)
 	at java.sql.DriverManager.getConnection(DriverManager.java:664)
 	at java.sql.DriverManager.getConnection(DriverManager.java:208)
 	at org.eclipse.persistence.sessions.DefaultConnector.connect(DefaultConnector.java:98)
 	... 38 more
-</error>
-    <system-out>[EL Info]: 2014-12-08 10:32:16.886--ServerSession(813656972)--Thread(Thread[main,5,main])--EclipseLink, version: Eclipse Persistence Services - 2.5.0.v20130507-3faac2b
-[EL Severe]: ejb: 2014-12-08 10:32:16.897--ServerSession(813656972)--Thread(Thread[main,5,main])--Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.0.v20130507-3faac2b): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user &apos;se42&apos;@&apos;localhost&apos; (using password: YES)
-Error Code: 1045
-</system-out>
-  </testcase>
-  <testcase classname="auction.service.JPARegistrationMgrTest" name="getUser" time="0.002">
-    <error message="Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.0.v20130507-3faac2b): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user &apos;se42&apos;@&apos;localhost&apos; (using password: YES)
-Error Code: 1045" type="javax.persistence.PersistenceException">javax.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.0.v20130507-3faac2b): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user &apos;se42&apos;@&apos;localhost&apos; (using password: YES)
+numberOfOfferdItems(auction.service.ItemsFromSellerTest)  Time elapsed: 0.002 sec  <<< ERROR!
+javax.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.0.v20130507-3faac2b): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Access denied for user 'se42'@'localhost' (using password: YES)
 Error Code: 1045
 	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:762)
 	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:204)
 	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.createEntityManagerImpl(EntityManagerFactoryDelegate.java:304)
 	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.createEntityManagerImpl(EntityManagerFactoryImpl.java:336)
 	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.createEntityManager(EntityManagerFactoryImpl.java:302)
-	at auction.service.JPARegistrationMgrTest.&lt;init&gt;(JPARegistrationMgrTest.java:18)
+	at auction.service.ItemsFromSellerTest.<init>(ItemsFromSellerTest.java:20)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -176,7 +104,7 @@ Error Code: 1045
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 Caused by: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.0.v20130507-3faac2b): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user &apos;se42&apos;@&apos;localhost&apos; (using password: YES)
+Internal Exception: java.sql.SQLException: Access denied for user 'se42'@'localhost' (using password: YES)
 Error Code: 1045
 	at org.eclipse.persistence.exceptions.DatabaseException.sqlException(DatabaseException.java:331)
 	at org.eclipse.persistence.exceptions.DatabaseException.sqlException(DatabaseException.java:326)
@@ -187,38 +115,29 @@ Error Code: 1045
 	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryProvider.login(EntityManagerFactoryProvider.java:239)
 	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:681)
 	... 33 more
-Caused by: java.sql.SQLException: Access denied for user &apos;se42&apos;@&apos;localhost&apos; (using password: YES)
+Caused by: java.sql.SQLException: Access denied for user 'se42'@'localhost' (using password: YES)
 	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:946)
 	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:2870)
 	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:812)
 	at com.mysql.jdbc.MysqlIO.secureAuth411(MysqlIO.java:3269)
 	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1182)
 	at com.mysql.jdbc.Connection.createNewIO(Connection.java:2670)
-	at com.mysql.jdbc.Connection.&lt;init&gt;(Connection.java:1531)
+	at com.mysql.jdbc.Connection.<init>(Connection.java:1531)
 	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:266)
 	at java.sql.DriverManager.getConnection(DriverManager.java:664)
 	at java.sql.DriverManager.getConnection(DriverManager.java:208)
 	at org.eclipse.persistence.sessions.DefaultConnector.connect(DefaultConnector.java:98)
 	... 38 more
-</error>
-    <system-out>[EL Info]: 2014-12-08 10:32:16.906--ServerSession(813656972)--Thread(Thread[main,5,main])--EclipseLink, version: Eclipse Persistence Services - 2.5.0.v20130507-3faac2b
-[EL Severe]: ejb: 2014-12-08 10:32:16.913--ServerSession(813656972)--Thread(Thread[main,5,main])--Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.0.v20130507-3faac2b): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user &apos;se42&apos;@&apos;localhost&apos; (using password: YES)
-Error Code: 1045
-</system-out>
-  </testcase>
-  <testcase classname="auction.service.JPARegistrationMgrTest" name="getUsers" time="0.002">
-    <error message="Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.0.v20130507-3faac2b): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user &apos;se42&apos;@&apos;localhost&apos; (using password: YES)
-Error Code: 1045" type="javax.persistence.PersistenceException">javax.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.0.v20130507-3faac2b): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user &apos;se42&apos;@&apos;localhost&apos; (using password: YES)
+getItemsFromSeller(auction.service.ItemsFromSellerTest)  Time elapsed: 0.002 sec  <<< ERROR!
+javax.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.0.v20130507-3faac2b): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Access denied for user 'se42'@'localhost' (using password: YES)
 Error Code: 1045
 	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:762)
 	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:204)
 	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.createEntityManagerImpl(EntityManagerFactoryDelegate.java:304)
 	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.createEntityManagerImpl(EntityManagerFactoryImpl.java:336)
 	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.createEntityManager(EntityManagerFactoryImpl.java:302)
-	at auction.service.JPARegistrationMgrTest.&lt;init&gt;(JPARegistrationMgrTest.java:18)
+	at auction.service.ItemsFromSellerTest.<init>(ItemsFromSellerTest.java:20)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -248,7 +167,7 @@ Error Code: 1045
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 Caused by: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.0.v20130507-3faac2b): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user &apos;se42&apos;@&apos;localhost&apos; (using password: YES)
+Internal Exception: java.sql.SQLException: Access denied for user 'se42'@'localhost' (using password: YES)
 Error Code: 1045
 	at org.eclipse.persistence.exceptions.DatabaseException.sqlException(DatabaseException.java:331)
 	at org.eclipse.persistence.exceptions.DatabaseException.sqlException(DatabaseException.java:326)
@@ -259,24 +178,16 @@ Error Code: 1045
 	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryProvider.login(EntityManagerFactoryProvider.java:239)
 	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:681)
 	... 33 more
-Caused by: java.sql.SQLException: Access denied for user &apos;se42&apos;@&apos;localhost&apos; (using password: YES)
+Caused by: java.sql.SQLException: Access denied for user 'se42'@'localhost' (using password: YES)
 	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:946)
 	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:2870)
 	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:812)
 	at com.mysql.jdbc.MysqlIO.secureAuth411(MysqlIO.java:3269)
 	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1182)
 	at com.mysql.jdbc.Connection.createNewIO(Connection.java:2670)
-	at com.mysql.jdbc.Connection.&lt;init&gt;(Connection.java:1531)
+	at com.mysql.jdbc.Connection.<init>(Connection.java:1531)
 	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:266)
 	at java.sql.DriverManager.getConnection(DriverManager.java:664)
 	at java.sql.DriverManager.getConnection(DriverManager.java:208)
 	at org.eclipse.persistence.sessions.DefaultConnector.connect(DefaultConnector.java:98)
 	... 38 more
-</error>
-    <system-out>[EL Info]: 2014-12-08 10:32:16.92--ServerSession(813656972)--Thread(Thread[main,5,main])--EclipseLink, version: Eclipse Persistence Services - 2.5.0.v20130507-3faac2b
-[EL Severe]: ejb: 2014-12-08 10:32:16.934--ServerSession(813656972)--Thread(Thread[main,5,main])--Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.5.0.v20130507-3faac2b): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user &apos;se42&apos;@&apos;localhost&apos; (using password: YES)
-Error Code: 1045
-</system-out>
-  </testcase>
-</testsuite>

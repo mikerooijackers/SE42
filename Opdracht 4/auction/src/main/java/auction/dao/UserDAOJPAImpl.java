@@ -12,11 +12,11 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 public class UserDAOJPAImpl implements UserDAO {
-    EntityManagerFactory ef = Persistence.createEntityManagerFactory("db");
-    EntityManager users = ef.createEntityManager();
+    EntityManager users;
 
-    public UserDAOJPAImpl() {
-        //users = new HashMap<String, User>();
+    public UserDAOJPAImpl(EntityManager em) {
+        this.users = em;
+        
     }
 
     @Override
@@ -30,9 +30,7 @@ public class UserDAOJPAImpl implements UserDAO {
          if (findByEmail(user.getEmail()) != null) {
             throw new EntityExistsException();
         }
-        users.getTransaction().begin();
         users.persist(user);
-        users.getTransaction().commit();
     }
 
     @Override

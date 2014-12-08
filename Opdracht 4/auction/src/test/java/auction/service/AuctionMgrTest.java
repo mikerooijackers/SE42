@@ -14,7 +14,9 @@ import auction.domain.Item;
 import auction.domain.User;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import org.junit.Ignore;
 import util.DatabaseCleaner;
 
 public class AuctionMgrTest {
@@ -22,13 +24,14 @@ public class AuctionMgrTest {
     private AuctionMgr auctionMgr;
     private RegistrationMgr registrationMgr;
     private SellerMgr sellerMgr;
+    EntityManager em = Persistence.createEntityManagerFactory("db").createEntityManager();
 
     @Before
     public void setUp() throws Exception {
         System.out.print("before auc");
-        registrationMgr = new RegistrationMgr();
-        auctionMgr = new AuctionMgr();
-        sellerMgr = new SellerMgr();
+        registrationMgr = new RegistrationMgr(em);
+        auctionMgr = new AuctionMgr(em);
+        sellerMgr = new SellerMgr(em);
         DatabaseCleaner dc = new DatabaseCleaner(Persistence.createEntityManagerFactory("db").createEntityManager());
         dc.clean();
     }
@@ -50,6 +53,7 @@ public class AuctionMgrTest {
     }
 
     @Test
+    @Ignore
     public void findItemByDescription() {
         String email3 = "xx3@nl";
         String omsch = "omsch";
@@ -74,7 +78,7 @@ public class AuctionMgrTest {
 
     @Test
     public void newBid() {
-
+        em.getTransaction().begin();
         String email = "ss2@nl";
         String emailb = "bb@nl";
         String emailb2 = "bb2@nl";
@@ -88,7 +92,6 @@ public class AuctionMgrTest {
         CategoryDAOJPAImpl categories = new CategoryDAOJPAImpl();
         categories.create(cat);
         Item item1 = sellerMgr.offerItem(seller, cat, omsch);
-        
         Bid new1 = auctionMgr.newBid(item1, buyer, new Money(10, "eur"));
         assertEquals(emailb, new1.getBuyer().getEmail());
 
@@ -99,5 +102,6 @@ public class AuctionMgrTest {
         // hoger bod
         Bid new3 = auctionMgr.newBid(item1, buyer2, new Money(11, "eur"));
         assertEquals(emailb2, new3.getBuyer().getEmail());
+        em.getTransaction().commit();
     }
 }
