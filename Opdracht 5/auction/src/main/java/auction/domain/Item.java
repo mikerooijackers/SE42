@@ -1,5 +1,6 @@
 package auction.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import nl.fontys.util.Money;
@@ -17,11 +18,10 @@ import javax.persistence.OneToOne;
 
 /**
  * Contains an item entity
- * @author Subhi
  */
 @Entity
 @Inheritance (strategy = InheritanceType.TABLE_PER_CLASS) 
-public class Item implements Comparable {
+public class Item implements Comparable, Serializable {
     /**
      * The id of this item
      */

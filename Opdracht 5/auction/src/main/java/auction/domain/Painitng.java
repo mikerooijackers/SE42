@@ -5,6 +5,8 @@
  */
 package auction.domain;
 
+import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 /**
@@ -12,8 +14,10 @@ import javax.persistence.Entity;
  * @author Mike
  */
 @Entity
-public class Painitng extends Item {
+public class Painitng extends Item implements Serializable {
+    @Column
     private String painter;
+    @Column
     private String title;
 
     public Painitng() {
@@ -39,6 +43,4 @@ public class Painitng extends Item {
     public void setTitle(String title) {
         this.title = title;
     }
-    
-    
 }

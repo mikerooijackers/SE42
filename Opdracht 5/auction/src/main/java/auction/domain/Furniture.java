@@ -5,6 +5,8 @@
  */
 package auction.domain;
 
+import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 /**
@@ -12,7 +14,8 @@ import javax.persistence.Entity;
  * @author Mike
  */
 @Entity
-public class Furniture extends Item {
+public class Furniture extends Item implements Serializable {
+    @Column
     private String material;
 
     public Furniture() {
@@ -29,4 +32,5 @@ public class Furniture extends Item {
     public void setMaterial(String material) {
         this.material = material;
     }   
+
 }
