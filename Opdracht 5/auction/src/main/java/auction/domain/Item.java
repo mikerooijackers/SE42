@@ -53,7 +53,7 @@ public class Item implements Comparable, Serializable {
     @OneToOne
     private Bid highest;
     
-    @OneToMany(mappedBy="item", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy="item")
     private List<Bid> bids;
 
     public Item() {

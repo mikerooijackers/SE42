@@ -12,7 +12,6 @@ import java.util.Set;
 
 /**
  * Contains a user entity
- * @author Subhi
  */
 @Entity
 public class User{

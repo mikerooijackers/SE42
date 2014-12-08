@@ -151,5 +151,6 @@ public class ItemsFromSellerTest {
         assertEquals(2, offerItem.getBids().size());
         Bid bid2 = offerItem.getHighestBid();
         assertEquals(bid1.getItem(), offerItem);
+        
     }
 }
