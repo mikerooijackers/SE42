@@ -10,6 +10,8 @@ import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.CascadeType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -18,6 +20,7 @@ import javax.persistence.OneToOne;
  * @author Subhi
  */
 @Entity
+@Inheritance (strategy = InheritanceType.TABLE_PER_CLASS) 
 public class Item implements Comparable {
     /**
      * The id of this item

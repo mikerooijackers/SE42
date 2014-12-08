@@ -42,4 +42,16 @@ public class SellerMgr {
         System.out.println("NO!!!");
         return false;
     }
+
+    Item offerFurniture(User u1, Category cat, String type, String material) {
+        Item item = new Item(u1, cat, type + " van " + material);
+        itemDAO.create(item);
+        return item;
+    }
+
+    Item offerPainting(User u1, Category cat, String omsch, String title, String painter) {
+        Item item = new Item(u1, cat, painter + " " + title);
+        itemDAO.create(item);
+        return item;
+    }
 }

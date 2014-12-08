@@ -1,14 +1,13 @@
-package nl.fontys.util;
+package auction.domain;
 
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
 @Generated(value="EclipseLink-2.5.0.v20130507-rNA", date="2014-12-08T12:05:25")
-@StaticMetamodel(Money.class)
-public class Money_ { 
+@StaticMetamodel(Furniture.class)
+public class Furniture_ extends Item_ {
 
-    public static volatile SingularAttribute<Money, Long> cents;
-    public static volatile SingularAttribute<Money, String> currency;
+    public static volatile SingularAttribute<Furniture, String> material;
 
 }
