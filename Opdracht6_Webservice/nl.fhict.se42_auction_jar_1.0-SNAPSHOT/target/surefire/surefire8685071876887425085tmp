@@ -1,0 +1,6 @@
+#surefire
+#Mon Dec 15 13:56:36 CET 2014
+maven.ext.class.path=C\:\\Program Files (x86)\\NetBeans 7.4\\java\\maven-nblib\\netbeans-eventspy.jar
+user.dir=C\:\\Users\\Laurens\\Desktop\\SE42.git\\trunk\\Opdracht6_Webservice\\nl.fhict.se42_auction_jar_1.0-SNAPSHOT
+localRepository=C\:\\Users\\Laurens\\.m2\\repository
+basedir=C\:\\Users\\Laurens\\Desktop\\SE42.git\\trunk\\Opdracht6_Webservice\\nl.fhict.se42_auction_jar_1.0-SNAPSHOT
