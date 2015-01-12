@@ -11,10 +11,14 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -66,20 +70,21 @@ public class FXMLDocumentController implements Initializable {
 
         byte[] privateKeyBytes = keyPair.getPrivate().getEncoded();
 
-        byte[] encryptedPrivateKeyBytes = passwordEncrypt(password.toCharArray(), text.getBytes());
+       passwordEncrypt(password.toCharArray(), text.getBytes());
 
-        fos = new FileOutputStream(privateKeyFilename);
-        fos.write(encryptedPrivateKeyBytes);
-        fos.close();
+       
         
-        passwordfield.setText("");
-        textfield.setText("");
+//        passwordfield.setText("");
+//        textfield.setText("");
                 
     }
     
     @FXML
     private void handleButtonActiondecrypte(ActionEvent event) throws Exception {
-        passwordDecrypt(passwordfield.getText().toCharArray(), "privateKeyFilename".getBytes());
+        Path filePath = Paths.get("./","privateKeyFilename");
+        byte[] readFile = Files.readAllBytes(filePath);
+       
+        passwordDecrypt(passwordfield.getText().toCharArray(), readFile);
     }
     
     @Override
@@ -87,7 +92,7 @@ public class FXMLDocumentController implements Initializable {
         // TODO
     }    
     
-    private static byte[] passwordEncrypt(char[] password, byte[] plaintext) throws Exception {
+    private static void passwordEncrypt(char[] password, byte[] plaintext) throws Exception {
         int MD5_ITERATIONS = 1000;
         byte[] salt = new byte[8];
         SecureRandom random = new SecureRandom();
@@ -101,11 +106,14 @@ public class FXMLDocumentController implements Initializable {
         cipher.init(Cipher.ENCRYPT_MODE, key, paramSpec);
 
         byte[] ciphertext = cipher.doFinal(plaintext);
-
+FileOutputStream  fos = new FileOutputStream("privateKeyFilename");
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         baos.write(salt);
         baos.write(ciphertext);
-        return baos.toByteArray();
+        baos.writeTo(fos);
+     
+        fos.close();
+        
     }
     
     private static void passwordDecrypt(char[] password, byte[] file) throws Exception {
@@ -121,11 +129,15 @@ public class FXMLDocumentController implements Initializable {
         PBEParameterSpec paramSpec = new PBEParameterSpec(salt, MD5_ITERATIONS);
         Cipher cipher = Cipher.getInstance("PBEWithMD5AndDES");
         cipher.init(Cipher.DECRYPT_MODE, key, paramSpec);
-
-        byte[] ciphertext = cipher.doFinal(file);
+        
+        byte[] filteredByteArray = Arrays.copyOfRange(file, 8,file.length);
+        byte[] filteredFixedSize = new byte[16];
+        System.arraycopy(filteredByteArray, 0,filteredFixedSize, 0, filteredByteArray.length);
+        
+        byte[] ciphertext = cipher.doFinal(filteredByteArray);
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        System.out.println("salt:" + salt);
-        System.out.println("text:" + ciphertext);
+        System.out.println("salt:" + new String(salt));
+        System.out.println("text:" + new String(ciphertext));
     }
 }
