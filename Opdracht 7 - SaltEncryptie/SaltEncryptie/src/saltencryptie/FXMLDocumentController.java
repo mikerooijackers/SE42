@@ -6,6 +6,7 @@
 package saltencryptie;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -42,6 +43,9 @@ public class FXMLDocumentController implements Initializable {
     private Button button;
     
     @FXML
+    private Button decrypte;
+    
+    @FXML
     private void handleButtonAction(ActionEvent event) throws Exception {
         System.out.println("You clicked me!");
         String text = textfield.getText();
@@ -68,6 +72,14 @@ public class FXMLDocumentController implements Initializable {
         fos.write(encryptedPrivateKeyBytes);
         fos.close();
         
+        passwordfield.setText("");
+        textfield.setText("");
+                
+    }
+    
+    @FXML
+    private void handleButtonActiondecrypte(ActionEvent event) throws Exception {
+        passwordDecrypt(passwordfield.getText().toCharArray(), "privateKeyFilename".getBytes());
     }
     
     @Override
@@ -94,5 +106,26 @@ public class FXMLDocumentController implements Initializable {
         baos.write(salt);
         baos.write(ciphertext);
         return baos.toByteArray();
+    }
+    
+    private static void passwordDecrypt(char[] password, byte[] file) throws Exception {
+        int MD5_ITERATIONS = 1000;
+        byte[] salt = new byte[8];
+        FileInputStream inputStream = new FileInputStream("privateKeyFilename");
+        inputStream.read(salt, 0 , 8);
+        System.out.println(salt);
+
+        PBEKeySpec keySpec = new PBEKeySpec(password);
+        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("PBEWithMD5AndDES");
+        SecretKey key = keyFactory.generateSecret(keySpec);
+        PBEParameterSpec paramSpec = new PBEParameterSpec(salt, MD5_ITERATIONS);
+        Cipher cipher = Cipher.getInstance("PBEWithMD5AndDES");
+        cipher.init(Cipher.DECRYPT_MODE, key, paramSpec);
+
+        byte[] ciphertext = cipher.doFinal(file);
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        System.out.println("salt:" + salt);
+        System.out.println("text:" + ciphertext);
     }
 }
